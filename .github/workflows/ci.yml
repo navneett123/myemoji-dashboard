@@ -1,97 +1,47 @@
 name: 🧩 EmojiVerse CI (Smoke Test)
 
-# ----------------------------------------------------
-# ✅ Trigger:
-# Run this workflow automatically on every push to
-# the master branch. You can add "pull_request" later
-# if you want PR validation too.
-# ----------------------------------------------------
 on:
   push:
     branches: [master]
 
-# ----------------------------------------------------
-# 🧱 Jobs:
-# We’ll define a single job named "smoke"
-# that runs a basic health check on your app.
-# ----------------------------------------------------
 jobs:
   smoke:
     name: Smoke Test — Express App
-    runs-on: ubuntu-latest # GitHub’s hosted Linux VM
+    runs-on: ubuntu-latest
 
     steps:
-      # ------------------------------------------------
-      # 🪜 Step 1: Checkout code
-      # Pull your repo files into the runner’s workspace.
-      # ------------------------------------------------
+      # 🪜 Step 1: Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ------------------------------------------------
-      # ⚙️ Step 2: Setup Node.js
-      # Installs Node 20 and enables npm caching
-      # for faster subsequent runs.
-      # ------------------------------------------------
+      # ⚙️ Step 2: Setup Node.js (no cache → clean & simple)
+      # Removed cache: npm to avoid warnings since no lockfile exists yet.
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      # ------------------------------------------------
       # 📦 Step 3: Install dependencies
-      # Uses npm ci for a clean, reproducible install.
-      # ------------------------------------------------
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      # ------------------------------------------------
-      # 🚀 Step 4: Start the Express server
-      # Run the server in the background,
-      # store its process ID (PID), and give it
-      # a few seconds to fully start up.
-      # ------------------------------------------------
+      # 🚀 Step 4: Start server (run in background)
       - name: Start Express server
         run: |
           node server.js & echo $! > server.pid
           sleep 3
 
-      # ------------------------------------------------
-      # 🔍 Step 5: Verify homepage
-      # Hit the root endpoint (http://localhost:3000)
-      # to make sure static files are being served.
-      # ------------------------------------------------
+      # 🔍 Step 5: Check homepage
       - name: Test Home Page
         run: curl -sSf http://localhost:3000 > /dev/null
 
-      # ------------------------------------------------
-      # 🧠 Step 6: Verify API
-      # Call your backend route and print the first
-      # 200 characters of the emoji JSON response.
-      # If this fails, the job will automatically fail.
-      # ------------------------------------------------
+      # 🧠 Step 6: Check API
       - name: Test API endpoint
         run: |
           echo "Sample /api/emojis response:"
           curl -sSf http://localhost:3000/api/emojis | head -c 200 && echo
 
-      # ------------------------------------------------
       # 🧹 Step 7: Stop the server
-      # Always attempt to kill the running Node process
-      # (even if earlier steps failed).
-      # ------------------------------------------------
       - name: Stop server
         if: always()
-        run: |
-          kill $(cat server.pid) || true
-
-# ----------------------------------------------------
-# 💡 Summary:
-# - Runs automatically on push to master
-# - Spins up a clean Ubuntu VM
-# - Installs Node & dependencies
-# - Starts your Express app
-# - Verifies both frontend and API endpoints
-# - Shuts down cleanly
-# ----------------------------------------------------
+        run: kill $(cat server.pid) || true
