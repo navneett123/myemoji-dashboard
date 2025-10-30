@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌌 EmojiVerse — Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🌌 EmojiVerse <span class="hint">API-driven Emoji Dashboard</span></h1>
+    <div class="right">
+      <input id="q" placeholder="Search (press / )" />
+      <button id="randomBtn">🎲 Random 8</button>
+      <button id="copySel">📋 Copy selected</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="tabs" id="tabs"></div>
+      <div class="section">
+        <div class="hint">Shortcuts: <span class="kbd">/</span> focus search, <span class="kbd">Enter</span> copy first, <span class="kbd">Esc</span> clear</div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="grid" id="grid"></div>
+    </main>
+    <div class="tray">
+      <div class="section"><h3>⭐ Favorites</h3><div class="pillrow" id="fav"></div></div>
+      <div class="section"><h3>🕘 Recents</h3><div class="pillrow" id="rec"></div></div>
+      <div class="section"><h3>🧺 Selection</h3><div class="pillrow" id="sel"></div></div>
+    </div>
+  </div>
+
+  <footer>
+    <small>Local Express → GitHub Emojis API • Offline fallback ready</small>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

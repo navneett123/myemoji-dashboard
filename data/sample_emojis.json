@@ -1,0 +1,52 @@
+[
+  {
+    "name": "rocket",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f680.png",
+    "cat": "Travel & Places"
+  },
+  {
+    "name": "tada",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f389.png",
+    "cat": "Activities"
+  },
+  {
+    "name": "sparkles",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/2728.png",
+    "cat": "Smileys & Emotion"
+  },
+  {
+    "name": "heart",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/2764.png",
+    "cat": "Smileys & Emotion"
+  },
+  {
+    "name": "thumbsup",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png",
+    "cat": "People & Body"
+  },
+  {
+    "name": "wave",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png",
+    "cat": "People & Body"
+  },
+  {
+    "name": "dog",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f436.png",
+    "cat": "Animals & Nature"
+  },
+  {
+    "name": "cat",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f431.png",
+    "cat": "Animals & Nature"
+  },
+  {
+    "name": "pizza",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/1f355.png",
+    "cat": "Food & Drink"
+  },
+  {
+    "name": "coffee",
+    "url": "https://github.githubassets.com/images/icons/emoji/unicode/2615.png",
+    "cat": "Food & Drink"
+  }
+]

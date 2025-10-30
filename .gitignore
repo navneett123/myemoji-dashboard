@@ -1,0 +1,46 @@
+# === Node & dependencies ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# === Logs ===
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# === OS / Editor junk ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# === Environment / local config ===
+.env
+.env.local
+.env.*.local
+
+# === Build / cache ===
+.cache/
+coverage/
+dist/
+.tmp/
+*.swp
+*.swo
+
+# === IDE / workspace ===
+.vscode/
+.idea/
+*.iml
+
+# === Other ===
+# Zip exports or local archives
+*.zip
+# Any uploaded test files
+uploads/

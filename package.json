@@ -1,0 +1,14 @@
+{
+  "name": "emoji-verse-express",
+  "version": "1.0.0",
+  "description": "EmojiVerse Dashboard - Express edition",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}
