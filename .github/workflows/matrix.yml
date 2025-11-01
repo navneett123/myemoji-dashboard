@@ -1,0 +1,27 @@
+name: 🧩 Matrix Strategy — Node 18 & 20
+
+# Trigger manually from the Actions tab
+on: { workflow_dispatch: {} }
+
+jobs:
+  matrix-demo:
+    runs-on: ubuntu-latest
+
+    # Define matrix — each value creates a parallel job run
+    strategy:
+      matrix:
+        node: [18, 20] # same steps run for Node 18 and Node 20
+      fail-fast: false # don’t cancel if one fails
+
+    steps:
+      # Step 1: Set up Node for the current matrix version
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # Step 2: Print Node and npm version to verify environment
+      - run: |
+          echo "Running on Node version:"
+          node -v
+          echo "npm version:"
+          npm -v
