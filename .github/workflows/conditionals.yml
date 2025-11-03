@@ -1,0 +1,15 @@
+name: conditionals
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { type: choice, options: [fast, full], default: fast }
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "always"
+      - if: ${{ inputs.mode == 'full' }}
+        run: echo "full-mode"
+      - if: ${{ github.ref == 'refs/heads/master' }}
+        run: echo "on-master"
