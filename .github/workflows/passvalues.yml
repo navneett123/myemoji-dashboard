@@ -1,0 +1,18 @@
+name: 🧩 Pass Values — multiple
+on: { workflow_dispatch: {} }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.m.outputs.version }}
+      when: ${{ steps.m.outputs.when }}
+    steps:
+      - id: m
+        run: |
+          echo "version=1.2.$(date +%s)" >> $GITHUB_OUTPUT
+          echo "when=$(date -u +%FT%TZ)" >> $GITHUB_OUTPUT
+  announce:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo "v=${{ needs.build.outputs.version }} @ ${{ needs.build.outputs.when }}"
